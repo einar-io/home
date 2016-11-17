@@ -36,3 +36,4 @@ function install_files {
 
 install_files \
   .vimrc \
+  .bash_profile \
