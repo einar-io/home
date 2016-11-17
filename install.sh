@@ -27,4 +27,12 @@ function install_file() (
   ln -s "${orig_path}" "${dest_path}"
 )
 
-install_file .vimrc
+function install_files {
+  while [ $# -gt 0 ]; do
+    install_file $1
+    shift
+  done
+}
+
+install_files \
+  .vimrc \
