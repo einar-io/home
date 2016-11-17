@@ -19,6 +19,9 @@ function install_file() (
     if [ "${dest_path}" != "${orig_path}" ]; then
       echo "${install_dir} already has a file ${file}."
       exit 1
+    else
+      # Already installed
+      exit 0
     fi
   fi
   ln -s "${orig_path}" "${dest_path}"
