@@ -15,7 +15,7 @@ function install_file() (
       exit 1
     fi
   fi
-  ln -s "$orig_path" "$dest_path"
+  ln -s "${orig_path}" "${dest_path}"
 )
 
 install_file .vimrc
