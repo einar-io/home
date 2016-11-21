@@ -22,9 +22,9 @@
 
 set -euo pipefail
 
-install_dir=$HOME
-
 script_dir="$(dirname "$(readlink -f "${0}")")"
+
+install_dir=$HOME
 
 # Install by symlinking the files here. The files may already exist, and may
 # already point to here. install_file() attempts to account for these cases.
@@ -35,7 +35,7 @@ script_dir="$(dirname "$(readlink -f "${0}")")"
 function install_file() (
   file=${1}
   dest_path="$(readlink -f "${install_dir}/${file}")"
-  orig_path="$(readlink -f "${file}")"
+  orig_path="$(readlink -f "${script_dir}/${file}")"
 
   if [ -f "${dest_path}" ]; then
     if [ "${dest_path}" != "${orig_path}" ]; then
@@ -57,5 +57,5 @@ function install_files {
 }
 
 install_files \
-  ${script_dir}/.vimrc \
-  ${script_dir}/.bashrc \
+  .vimrc \
+  .bashrc \
