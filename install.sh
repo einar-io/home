@@ -24,6 +24,8 @@ set -euo pipefail
 
 install_dir=$HOME
 
+script_dir="$(dirname "$(readlink -f "${0}")")"
+
 # Install by symlinking the files here. The files may already exist, and may
 # already point to here. install_file() attempts to account for these cases.
 
@@ -55,5 +57,5 @@ function install_files {
 }
 
 install_files \
-  .vimrc \
-  .bash_profile \
+  ${script_dir}/.vimrc \
+  ${script_dir}/.bashrc \
