@@ -22,7 +22,7 @@
 
 set -euo pipefail
 
-script_dir="$(dirname "$(readlink -f "${0}")")"
+script_dir="$(cd "$(dirname "${0}")" && pwd -P)"
 
 install_dir=$HOME
 
@@ -34,8 +34,8 @@ install_dir=$HOME
 
 function install_file() (
   file=${1}
-  dest_path="$(readlink -f "${install_dir}/${file}")"
-  orig_path="$(readlink -f "${script_dir}/${file}")"
+  dest_path="${install_dir}/${file}"
+  orig_path="${script_dir}/${file}"
 
   if [ -f "${dest_path}" ]; then
     if [ "${dest_path}" != "${orig_path}" ]; then
